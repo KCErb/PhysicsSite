@@ -1,3 +1,32 @@
 .page-container {
   padding-top: 100px;
 }
+
+.img-hist {
+  height: 350px;
+}
+
+.proj-table td {
+  vertical-align: middle;
+  margin: 0 auto;
+  padding-left: 20px;
+}
+
+.proj-table th {
+  text-align: center;
+}
+
+.proj-header {
+  padding-bottom: 50px;
+}
+
+.panel-body {
+  color: #3d4b51;
+  font-weight: 200;
+  font-size: 1.1em;
+}
+
+/*
+.img-holder {
+  padding-top: 30px;
+}*/

@@ -7,6 +7,7 @@
   <script src="../assets/javascript/bootstrap.min.js"></script>
   <script src="http://d3js.org/d3.v3.min.js"></script>
   <script src="http://trifacta.github.com/vega/vega.js"></script>
+  <script src="../assets/javascript/pdf-cdf.js"></script>
 
   <link rel="stylesheet" href="../stylesheets/bootstrap.min.css" />
   <link rel="stylesheet" href="../stylesheets/home.css" />
@@ -52,25 +53,907 @@
 
   <!-- Content -->
   <div class ="container">
+    <div class="proj-header">
     <h1>
       Project 1
     </h1>
+    <hr>
     <p class="lead">
-      This is an example plot for project 1. I'm learning how to use SciRuby
-      to generate D3 via Vega (I think . . .)
+      This webpage contains the work, results, code, and discussions for Project 1. All of the work found here was done in Ruby by me using SciRuby's <a href="https://github.com/SciRuby/plotrb">Plotrb</a> and <a href="https://github.com/SciRuby/nmatrix">Nmatrix</a>. As of now SciRuby doesn't have any image processing tools so I built all of the classes, modules, and such needed to process and display the data as you see it here. That means the bulk of my work on this assignment is found <a>here</a> in my DIPTools module and <a>here</a> in my Plotter module. The only other things to note before we dive into the assignment is that I used <a href="http://www.imagemagick.org/RMagick/doc/#introduction">RMagick</a> to read and write image files, and I created a <a href="#">MathTools</a> module to store functions that I come across during the work of this course.
     </p>
+</div>
 
-  </div>
-  <!-- Plot -->
 
-  <div id="vis"></div>
-<script type="text/javascript">
-  // parse a spec and create a visualization view
-    function parse(spec) {
-      vg.parse.spec(spec, function(chart) { chart({el:"#vis", renderer:'svg'}).update(); });
-    }
-    parse("../assets/ruby/bar.json");
-</script>
+    <h2>
+      1. Build a Histogram and CDF
+    </h2>
+    <p class="lead">
+      The first task in this assignment was to simply obtain a histogram and CDF of several test images and some images that we collected ourselves. The code I used to generate these images is found <a>here</a> and the code I used to generate gray-scale versions of my own photos is found <a>here</a>. I chose to display normalized histograms (PDFs) of the images instead of regular (unnormalized) histograms so that the cdf would integrate to 1.0.
+    </p>
+    <!-- Plots Accordion -->
+    <div class="panel-group" id="accordion">
+      <!-- First Panel -->
+      <div class="panel panel-default">
+        <!-- Title -->
+        <div class="panel-heading">
+          <h4 class="panel-title">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+              Chang.tif
+            </a>
+          </h4>
+        </div>
+        <!-- Body -->
+        <div id="collapseOne" class="panel-collapse collapse">
+          <div class="panel-body">
+          <!-- Plot Table -->
+          <div class="table-responsive">
+            <table class="proj-table">
+              <tr>
+                <th>Image</th>
+                <th>PDF</th>
+                <th>CDF</th>
+              </tr>
+              <tr>
+                <td>
+                  <img src="../assets/ruby/Project1/images-1/chang.png" class="img-hist">
+                </td>
+                <td>
+                  <div id="pdf-chang"></div>
+                </td>
+                <td>
+                  <div id="cdf-chang"></div>
+                </td>
+              </tr>
+            </table>
+          </div>
+          <div class="panel panel-default">
+            <div class="panel-body">
+              This first image, Chang.tif, is very underexposed which puts most of the intensity on the far left side of the histogram. Since the CDF is the accumulated integral of the PDF we see that it quickly grows to approximately 0.9 by intensity level 40. This means that about 90% of the pixels in this image have an intensity value of 40 or less.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div><!-- Panel End -->
+
+    <!-- Second Panel -->
+    <div class="panel panel-default">
+      <!-- Title -->
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+            Crowd.tiff
+          </a>
+        </h4>
+      </div>
+      <!-- Body -->
+      <div id="collapseTwo" class="panel-collapse collapse">
+        <div class="panel-body">
+
+          <!-- Plot Table -->
+          <div class="table-responsive">
+            <table class="proj-table">
+              <tr>
+                <th>Image</th>
+                <th>PDF</th>
+                <th>CDF</th>
+              </tr>
+              <tr>
+                <td>
+                  <img src="../assets/ruby/Project1/images-1/crowd.png" class="img-hist">
+                </td>
+                <td>
+                  <div id="pdf-crowd"></div>
+                </td>
+                <td>
+                  <div id="cdf-crowd"></div>
+                </td>
+              </tr>
+            </table>
+          </div>
+          <div class="panel panel-default">
+            <div class="panel-body">
+              Crowd.tiff is similar to Chang.tif in that it is underexposed, and heavily left-biased in the histogram. The only exception is the woman in the foreground whose arm and shirt are contributing to a steadier tapering into lighter pixel intensities. Here the CDF can be used to estimate that the majority of pixels are at intensity levels well beneath 127 (or 50%).
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- Panel End -->
+
+    <!-- Third Panel -->
+    <div class="panel panel-default">
+      <!-- Title -->
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
+            Portal.tiff
+          </a>
+        </h4>
+      </div>
+      <!-- Body -->
+      <div id="collapseThree" class="panel-collapse collapse">
+        <div class="panel-body">
+
+          <!-- Plot Table -->
+          <div class="table-responsive">
+            <table class="proj-table">
+              <tr>
+                <th>Image</th>
+                <th>PDF</th>
+                <th>CDF</th>
+              </tr>
+              <tr>
+                <td>
+                  <img src="../assets/ruby/Project1/images-1/portal.png" class="img-hist">
+                </td>
+                <td>
+                  <div id="pdf-portal"></div>
+                </td>
+                <td>
+                  <div id="cdf-portal"></div>
+                </td>
+              </tr>
+            </table>
+          </div>
+          <div class="panel panel-default">
+            <div class="panel-body">
+              Portal.tiff has a large contribution to the left side of the histogram from the black regions of the image, but as the cdf shows us, we get to about 50% intensity (level 127) right around 50% of the total pixel values. That means this image is pretty well split between bright and dark regions.
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- Panel End -->
+
+    <!-- Fourth Panel -->
+    <div class="panel panel-default">
+      <!-- Title -->
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#collapseFour">
+            University.tiff
+          </a>
+        </h4>
+      </div>
+      <!-- Body -->
+      <div id="collapseFour" class="panel-collapse collapse">
+        <div class="panel-body">
+
+          <!-- Plot Table -->
+          <div class="table-responsive">
+            <table class="proj-table">
+              <tr>
+                <th>Image</th>
+                <th>PDF</th>
+                <th>CDF</th>
+              </tr>
+              <tr>
+                <td>
+                  <img src="../assets/ruby/Project1/images-1/university.png" class="img-hist">
+                </td>
+                <td>
+                  <div id="pdf-university"></div>
+                </td>
+                <td>
+                  <div id="cdf-university"></div>
+                </td>
+              </tr>
+            </table>
+          </div>
+          <div class="panel panel-default">
+            <div class="panel-body">
+              University.tiff is very similar to Chang.tif except that where Chang.tif gets to a cdf of 1.0 around intensity 80, University.tiff reaches this level by about 45. That means this picture is much darker than Chang.tif.
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- Panel End -->
+
+    <!-- Fifth Panel -->
+    <div class="panel panel-default">
+      <!-- Title -->
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#collapseFive">
+            Notebook.tiff
+          </a>
+        </h4>
+      </div>
+      <!-- Body -->
+      <div id="collapseFive" class="panel-collapse collapse">
+        <div class="panel-body">
+
+          <!-- Plot Table -->
+          <div class="table-responsive">
+            <table class="proj-table">
+              <tr>
+                <th>Image</th>
+                <th>PDF</th>
+                <th>CDF</th>
+              </tr>
+              <tr>
+                <td>
+                  <img src="../assets/ruby/Project1/images-1/notebook.png" class="img-hist">
+                </td>
+                <td>
+                  <div id="pdf-notebook"></div>
+                </td>
+                <td>
+                  <div id="cdf-notebook"></div>
+                </td>
+              </tr>
+            </table>
+          </div>
+            <div class="panel panel-default">
+              <div class="panel-body">
+                This picture of a notebook page was taken with my digital camera by setting the ISO to its highest value, and turning the flash on. I wanted an overexposed photo since there aren't any in the example photos. As expected there is an even split between high and low intensities since the picture has black and white features. What was unexpected, was that the compressed format that my camera apparently hands me, doesn't use all of the available intensity levels! Strangely there seem to be about 8 distinct peaks in the bottom of the scale, and 3 or 4 in the top, rather than a smattering of peaks around each focus.
+              </div>
+            </div>
+        </div>
+      </div>
+
+    </div><!-- Panel End -->
+
+    <!-- Sixth Panel -->
+    <div class="panel panel-default">
+      <!-- Title -->
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#collapseSix">
+            Baby.tiff
+          </a>
+        </h4>
+      </div>
+      <!-- Body -->
+      <div id="collapseSix" class="panel-collapse collapse">
+        <div class="panel-body">
+
+          <!-- Plot Table -->
+          <div class="table-responsive">
+            <table class="proj-table">
+              <tr>
+                <th>Image</th>
+                <th>PDF</th>
+                <th>CDF</th>
+              </tr>
+              <tr>
+                <td>
+                  <img src="../assets/ruby/Project1/images-1/baby.png" class="img-hist">
+                </td>
+                <td>
+                  <div id="pdf-baby"></div>
+                </td>
+                <td>
+                  <div id="cdf-baby"></div>
+                </td>
+              </tr>
+            </table>
+          </div>
+          <div class="panel panel-default">
+            <div class="panel-body">
+              This photo of a canister of spray-on baby sunscreen was taken against the white background of my wall with the same camera settings as the notebook picture.The white background virtually eliminates the darker intensity peaks on the left-side of the histogram and the CDF doesn't even begin to grow above 10% until about the 180th intensity level.
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- Panel End -->
+
+  </div><!-- Accordion end -->
+
+
+  <h2>
+    2. Histogram Equalization
+  </h2>
+  <p class="lead">
+    The next task in this assignment was to use the cdf and pdf functions created earlier to implement a histogram equalization routine. The code used to generate these images and plots can be found <a>here</a>. This time, I scaled the histograms to have a maximum at 1.0 so that the cdf could be plotted on top of the histogram as a line plot. We'll see in these examples that as a rule of thumb, images which have far left or right leaning histograms are well-suited to equalization, whereas images with strong amplitudes in <em>both</em> regions do not equalize as well.
+  </p>
+  <!-- Plots Accordion -->
+  <div class="panel-group" id="accordion2">
+    <!-- First Panel -->
+    <div class="panel panel-default">
+      <!-- Title -->
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion2" href="#EqOne">
+            Chang.tif
+          </a>
+        </h4>
+      </div>
+      <!-- Body -->
+      <div id="EqOne" class="panel-collapse collapse">
+        <div class="panel-body">
+          <!-- Plot Table -->
+          <div class="table-responsive">
+            <table class="proj-table">
+              <tr>
+                <th>Image</th>
+                <th>PDF/CDF</th>
+              </tr>
+              <tr>
+                <td>
+                  <img src="../assets/ruby/Project1/images-2/chang.png" class="img-hist">
+                </td>
+                <td>
+                  <div id="pdf-cdf-chang"></div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <img src="../assets/ruby/Project1/images-2/chang-eq.png" class="img-hist">
+                </td>
+                <td>
+                  <div id="pdf-cdf-chang-eq"></div>
+                </td>
+              </tr>
+            </table>
+          </div>
+          <!-- Table End -->
+          <div class="panel panel-default">
+            <div class="panel-body">
+              This image was really improved nicely by histogram equalization. In the corrected image we can see that the issue is not so much that the camera failed to pick up the features, as it was that the screen is not displaying the image correctly. This is the same effect as when you walk into a dark room and at first only see darkness, but after some time, you begin to see features and details. As your eyes adjust to the darkness they allow intensities that you would have once called 'dim' to be at the upper end of your psychological dynamic range and thus become 'bright'.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div><!-- Panel End -->
+
+    <!-- Second Panel -->
+    <div class="panel panel-default">
+      <!-- Title -->
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion2" href="#EqTwo">
+            Crowd.tiff
+          </a>
+        </h4>
+      </div>
+      <!-- Body -->
+      <div id="EqTwo" class="panel-collapse collapse">
+        <div class="panel-body">
+          <!-- Plot Table -->
+          <div class="table-responsive">
+            <table class="proj-table">
+              <tr>
+                <th>Image</th>
+                <th>PDF/CDF</th>
+              </tr>
+              <tr>
+                <td>
+                  <img src="../assets/ruby/Project1/images-2/crowd.png" class="img-hist">
+                </td>
+                <td>
+                  <div id="pdf-cdf-crowd"></div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <img src="../assets/ruby/Project1/images-2/crowd-eq.png" class="img-hist">
+                </td>
+                <td>
+                  <div id="pdf-cdf-crowd-eq"></div>
+                </td>
+              </tr>
+            </table>
+          </div>
+          <!-- Table End -->
+          <div class="panel panel-default">
+            <div class="panel-body">
+              This image really highlights the characteristic stair-step shape of an equalized cdf. The 45 degree angle and even steps of the cdf indicate that this image has responded well to equalization. This is because the more evenly intensities are distributed throughout the available range, the better contrast will be present in the resultant image.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div><!-- Panel End -->
+
+    <!-- Third Panel -->
+    <div class="panel panel-default">
+      <!-- Title -->
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion2" href="#EqThird">
+            Portal.tiff
+          </a>
+        </h4>
+      </div>
+      <!-- Body -->
+      <div id="EqThird" class="panel-collapse collapse">
+        <div class="panel-body">
+          <!-- Plot Table -->
+          <div class="table-responsive">
+            <table class="proj-table">
+              <tr>
+                <th>Image</th>
+                <th>PDF/CDF</th>
+              </tr>
+              <tr>
+                <td>
+                  <img src="../assets/ruby/Project1/images-2/portal.png" class="img-hist">
+                </td>
+                <td>
+                  <div id="pdf-cdf-portal"></div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <img src="../assets/ruby/Project1/images-2/portal-eq.png" class="img-hist">
+                </td>
+                <td>
+                  <div id="pdf-cdf-portal-eq"></div>
+                </td>
+              </tr>
+            </table>
+          </div>
+          <!-- Table End -->
+          <div class="panel panel-default">
+            <div class="panel-body">
+              This is an example of an image that is relatively unresponsive to the histogram equalization method. Because this image already uses the display's dynamic range fairly well, the equalization process is not able to move many intensities away from their initial positions. Again, if you look at the cdf you'll see that it barely resembles the straight and evenly spaced staircase of Crowd.tiff.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div><!-- Panel End -->
+
+    <!-- Fourth Panel -->
+    <div class="panel panel-default">
+      <!-- Title -->
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion2" href="#EqFour">
+            University.tiff
+          </a>
+        </h4>
+      </div>
+      <!-- Body -->
+      <div id="EqFour" class="panel-collapse collapse">
+        <div class="panel-body">
+          <!-- Plot Table -->
+          <div class="table-responsive">
+            <table class="proj-table">
+              <tr>
+                <th>Image</th>
+                <th>PDF/CDF</th>
+              </tr>
+              <tr>
+                <td>
+                  <img src="../assets/ruby/Project1/images-2/university.png" class="img-hist">
+                </td>
+                <td>
+                  <div id="pdf-cdf-university"></div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <img src="../assets/ruby/Project1/images-2/university-eq.png" class="img-hist">
+                </td>
+                <td>
+                  <div id="pdf-cdf-university-eq"></div>
+                </td>
+              </tr>
+            </table>
+          </div>
+          <!-- Table End -->
+          <div class="panel panel-default">
+            <div class="panel-body">
+              This image, much like Crowd.tiff, is well suited to enhancement by histogram equalization due to its clustering of intensities in the lower region of the histogram.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div><!-- Panel End -->
+
+    <!-- Fifth Panel -->
+    <div class="panel panel-default">
+      <!-- Title -->
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion2" href="#EqFive">
+            Notebook.tiff
+          </a>
+        </h4>
+      </div>
+      <!-- Body -->
+      <div id="EqFive" class="panel-collapse collapse">
+        <div class="panel-body">
+          <!-- Plot Table -->
+          <div class="table-responsive">
+            <table class="proj-table">
+              <tr>
+                <th>Image</th>
+                <th>PDF/CDF</th>
+              </tr>
+              <tr>
+                <td>
+                  <img src="../assets/ruby/Project1/images-2/notebook.png" class="img-hist">
+                </td>
+                <td>
+                  <div id="pdf-cdf-notebook"></div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <img src="../assets/ruby/Project1/images-2/notebook-eq.png" class="img-hist">
+                </td>
+                <td>
+                  <div id="pdf-cdf-notebook-eq"></div>
+                </td>
+              </tr>
+            </table>
+          </div>
+          <!-- Table End -->
+          <div class="panel panel-default">
+            <div class="panel-body">
+              I took this photo with the intent of learning whether or not histogram equalization would be able to bring out the otherwise washed out K on the page of the notebook. Despite this image already being heavily weighted in the dark <em>and</em> light regions of its histogram, the central regions were still able to be clarified somewhat by equalization and sure enough, the K appears.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div><!-- Panel End -->
+
+    <!-- Sixth Panel -->
+    <div class="panel panel-default">
+      <!-- Title -->
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion2" href="#EqSix">
+            Baby.tiff
+          </a>
+        </h4>
+      </div>
+      <!-- Body -->
+      <div id="EqSix" class="panel-collapse collapse">
+        <div class="panel-body">
+          <!-- Plot Table -->
+          <div class="table-responsive">
+            <table class="proj-table">
+              <tr>
+                <th>Image</th>
+                <th>PDF/CDF</th>
+              </tr>
+              <tr>
+                <td>
+                  <img src="../assets/ruby/Project1/images-2/baby.png" class="img-hist">
+                </td>
+                <td>
+                  <div id="pdf-cdf-baby"></div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <img src="../assets/ruby/Project1/images-2/baby-eq.png" class="img-hist">
+                </td>
+                <td>
+                  <div id="pdf-cdf-baby-eq"></div>
+                </td>
+              </tr>
+            </table>
+          </div>
+          <!-- Table End -->
+          <div class="panel panel-default">
+            <div class="panel-body">
+              As I'd hoped, the resolution of the text on the bottle is greatly enhanced by histogram equalization. By separating light gray and dark gray into much lighter and darker intensities, we get a sharper resolution of the edges between text and background.I was surprised to see the white circle on the wall which centers on the shadow of the bottle. Considering the lighting in that room of my apartment, it is clear that in this case, histogram equalization actually brought out a feature of the room which is not readily visible to the naked eye! Namely, the shading from light to shadow on the wall due to the reflection of a round light source.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div><!-- Panel End -->
+
+
+  </div><!-- Accordion end -->
+
+  <h2>
+    3a. Checkerboard image segmentation
+  </h2>
+  <p class="lead">
+    The next task in this assignment was to use the shape of the histogram to estimate and calculate threshold values for image segmentation. The code used to generate the first two sections can be found <a>here</a>, the third section <a>here</a> and the fourth <a>here</a>.
+  </p>
+  <!-- Plots Accordion -->
+  <div class="panel-group" id="accordion3">
+    <!-- First Panel -->
+    <div class="panel panel-default">
+      <!-- Title -->
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion3" href="#CheckOne">
+            Checker1.gif
+          </a>
+        </h4>
+      </div>
+      <!-- Body -->
+      <div id="CheckOne" class="panel-collapse collapse">
+        <div class="panel-body">
+          <!-- Plot Table -->
+          <div class="table-responsive">
+            <table class="proj-table">
+              <tr>
+                <th>Image</th>
+                <th>PDF</th>
+                <th>Segmented Image</th>
+              </tr>
+              <tr>
+                <td>
+                  <img src="../assets/ruby/Project1/images-3/checker1.png" class="img-hist">
+                </td>
+                <td>
+                  <div id="pdf-checker1"></div>
+                </td>
+                <td>
+                  <img src="../assets/ruby/Project1/images-3/checker1-th.png" class="img-hist">
+                </td>
+              </tr>
+            </table>
+          </div>
+          <!-- Table End -->
+          <div class="panel panel-default">
+            <div class="panel-body">
+              For a start, I thresholded this image by simply 'eye-balling' the histogram and choosing the value <strong>128</strong> as the cut-off point (shown in magneta on the PDF). The result is better than the original image, but both the light and dark regions have considerable amounts of error. As I experimented with moving the threshold up and down the valley, it's clear that moving closer to the dark intensities causes the dark regions to have fewer errors at the cost of the lighter regions having more errors and vice versa. So the short coming here is that both dark and light regions have considerable overlap in intensities.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div><!-- Panel End -->
+
+    <!-- Second Panel -->
+    <div class="panel panel-default">
+      <!-- Title -->
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion3" href="#CheckTwo">
+            Checker2.gif
+          </a>
+        </h4>
+      </div>
+      <!-- Body -->
+      <div id="CheckTwo" class="panel-collapse collapse">
+        <div class="panel-body">
+          <!-- Plot Table -->
+          <div class="table-responsive">
+            <table class="proj-table">
+              <tr>
+                <th>Image</th>
+                <th>PDF</th>
+                <th>Segmented Image</th>
+              </tr>
+              <tr>
+                <td>
+                  <img src="../assets/ruby/Project1/images-3/checker2.png" class="img-hist">
+                </td>
+                <td>
+                  <div id="pdf-checker2"></div>
+                </td>
+                <td>
+                  <img src="../assets/ruby/Project1/images-3/checker2-th.png" class="img-hist">
+                </td>
+              </tr>
+            </table>
+          </div>
+          <!-- Table End -->
+          <div class="panel panel-default">
+            <div class="panel-body">
+              This histogram is much like the first, only the valley is shifted a little to the left (I placed it at <strong>123</strong> in the above plot) due to the unequal intensities. It is clearer in this example, that thresholding simply by the valley can be misleading. Because the nature of the image is the same as the first, one would expect the optimal thresholding value to be unchanged. And according to that theory, we would expect a left-shifted thresholding point to cause light-areas to have fewer errors when compared to Checker1, and dark areas to have more. From this, it is apparent that a different method may produce more consistent results.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div><!-- Panel End -->
+
+    <!-- Third Panel -->
+    <div class="panel panel-default">
+      <!-- Title -->
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion3" href="#CheckThree">
+            Class Specific Histograms
+          </a>
+        </h4>
+      </div>
+      <!-- Body -->
+      <div id="CheckThree" class="panel-collapse collapse">
+        <div class="panel-body">
+          <!-- Plot Table -->
+          <div class="table-responsive">
+            <table class="proj-table">
+              <tr>
+                <th>Image</th>
+                <th>Histograms with Fit Overlaid</th>
+              </tr>
+              <tr>
+                <td>
+                  <img src="../assets/ruby/Project1/images-3/checker1.png" class="img-hist">
+                </td>
+                <td>
+                  <div id="combined-checker1"></div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <img src="../assets/ruby/Project1/images-3/checker2.png" class="img-hist">
+                </td>
+                <td>
+                  <div id="combined-checker2"></div>
+                </td>
+              </tr>
+            </table>
+          </div>
+          <!-- Table End -->
+          <div class="panel panel-default">
+            <div class="panel-body">
+              Our next approach is to take samples of regions which we know beforehand contain only one 'class' and use them to estimate the shape of the histogram. In this case, the word class is used to denote a region of the image which is representative of something we want to select for or against. In a checkerboard, the two classes are dark checks and light checks. To obtain class-specific statistics, I selected a regions of interest (ROIs) from the upper left and upper right corners of the image and called them the 'light_roi' and 'dark_roi' respectively. <br><br>  In these plots we have checker1 and checker2 beside histograms taken from the two classes. The regions of interest are only 20 x 20 pixels so the histogram shape is very noisy. Using these regions of interest, I calculated the mean and standard deviation, and then created a normalized gaussian curve with the same mean and standard deviation. Finally I overlaid the curve and histogram to compare the gaussian estimates to the actual data. In these two cases the individual fits seem pretty good! As expected, they are nearly identical since the composition of each class doesn't change from image to image.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div><!-- Panel End -->
+
+    <!-- Fourth Panel -->
+    <div class="panel panel-default">
+      <!-- Title -->
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion3" href="#CheckFour">
+            Class Specific Thresholding
+          </a>
+        </h4>
+      </div>
+      <!-- Body -->
+      <div id="CheckFour" class="panel-collapse collapse">
+        <div class="panel-body">
+          <!-- Plot Table -->
+          <div class="table-responsive">
+            <table class="proj-table">
+              <tr>
+                <th>Old Segmented Image</th>
+                <th>New Segmented Image</th>
+                <th>Histogram with Threshold and Fit</th>
+              </tr>
+              <tr>
+                <td>
+                  <img src="../assets/ruby/Project1/images-3/checker1-th.png" class="img-hist">
+                </td>
+                <td>
+                  <img src="../assets/ruby/Project1/images-3/checker1-th2.png" class="img-hist">
+                </td>
+                <td>
+                  <div id="final-checker1"></div>
+                </td>
+                <td>
+                  <div id="final-bumped-checker1"></div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <img src="../assets/ruby/Project1/images-3/checker2-th.png" class="img-hist">
+                </td>
+                <td>
+                  <img src="../assets/ruby/Project1/images-3/checker2-th2.png" class="img-hist">
+                </td>
+                <td>
+                  <div id="final-checker2"></div>
+                </td>
+                <td>
+                  <div id="final-bumped-checker2"></div>
+                </td>
+              </tr>
+            </table>
+          </div>
+          <!-- Table End -->
+          <div class="panel panel-default">
+            <div class="panel-body">
+              Lastly, I renormalized the gaussian functions (black) to match the relative intensities of the two peaks and added them together (green). The minimum value between the means was used to find a new estimate for the 'valley'. It is important to note that this valley was selected via class-specific statistical measures and not based on the author's eye-ball guess. Next, the images were thresholded based on this value (magenta). <br><br> The new threshold values are actually very similar to the eyeball ones. For checker1 I chose <strong>128</strong> and this algorithm chose <strong>127</strong>, for checker2 I chose <strong>123</strong> and this algorithm chose <strong>125</strong>. So the images don't look very different. In fact, due to the nature of this segmentation challenge, any simple thresholding method is bound to return a noisy result since the fact is that both light and dark regions contain a wide range of intensities. Despite this minor set-back, the exercise is still valuable since it demonstrates that a simple threshold can be found programmatically and therefore more consistently / objectively. <br><br> In this section I was also asked if I could recreate the histogram profile from two gaussian pulses. Using the standard deviation measured from the ROIs, the histograms are far too narrow for this data set. However, when I manually inserted a standard deviation of 30 (and bumped the total intensity upward to match) I obtained the much better fits at far right. It is interesting to note that in checker2 the magenta line now falls more closely to my original guess since the combined minimum is now left shifted.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div><!-- Panel End -->
+
+
+  </div><!-- Accordion end -->
+
+
+  <h2>
+    3b. CT image segmentation
+  </h2>
+  <p class="lead">
+    Lastly, we used the routines and methods developed throughout this assignment to segment a CT image into bone vs non-bone regions. The code for these two sections is <a>here</a> and <a>here</a>.
+  </p>
+  <!-- Plots Accordion -->
+  <div class="panel-group" id="accordion4">
+    <!-- First Panel -->
+    <div class="panel panel-default">
+      <!-- Title -->
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion4" href="#CTOne">
+            CTscan.jpg
+          </a>
+        </h4>
+      </div>
+      <!-- Body -->
+      <div id="CTOne" class="panel-collapse collapse">
+        <div class="panel-body">
+          <!-- Plot Table -->
+          <div class="table-responsive">
+            <table class="proj-table">
+              <tr>
+                <th>Image</th>
+                <th>Histogram</th>
+                <th>CDF</th>
+              </tr>
+              <tr>
+                <td>
+                  <img src="../assets/ruby/Project1/images-3/CTscan.jpg" class="img-hist">
+                </td>
+                <td>
+                  <div id="hist-ct"></div>
+                </td>
+                <td>
+                  <div id="cdf-ct"></div>
+                </td>
+              </tr>
+            </table>
+          </div>
+          <!-- Table End -->
+          <div class="panel panel-default">
+            <div class="panel-body">
+              In these panels we examine the pdf and cdf of the CT scan pictured at left. The pdf above is almost invisible because the linear scale is dominated by the low-intensity pixels at left. But when we take a look at the CDF, we see some positive curvature between 80 and 160 indicating a sudden influx of probability at those intensities before flattening out again. That flat spot means there is very little contribution from those intensities and therefore there's a good chance of decent segmentation there.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div><!-- Panel End -->
+
+    <!-- Second Panel -->
+    <div class="panel panel-default">
+      <!-- Title -->
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion4" href="#CTwo">
+            Segmented CTscan
+          </a>
+        </h4>
+      </div>
+      <!-- Body -->
+      <div id="CTwo" class="panel-collapse collapse">
+        <div class="panel-body">
+          <!-- Plot Table -->
+          <div class="table-responsive">
+            <table class="proj-table">
+              <tr>
+                <th>No Threshold</th>
+                <th>Thresholded Image</th>
+                <th>Histogram with Overlays</th>
+              </tr>
+              <tr>
+                <td>
+                  <img src="../assets/ruby/Project1/images-3/CTscan.jpg" class="img-hist">
+                </td>
+                <td>
+                  <img src="../assets/ruby/Project1/images-3/CTscan-th.png" class="img-hist">
+                </td>
+                <td>
+                  <div id="final-ct"></div>
+                </td>
+              </tr>
+            </table>
+          </div>
+          <!-- Table End -->
+          <div class="panel panel-default">
+            <div class="panel-body">
+              In this sequence, we see the thresholded and unthresholded images. The assignment this time was to choose the best threshold "experimentally", so I used a few different thresholds and analyzed the image to determine approximately which value would separate bone from soft-tissue. As before the green line is a sum of the two gaussian fits. And also, as in the first, we see that the gaussian shape is a poor fit for the data. In this case the issue is that the soft-tissue peak is very broad and the bone peak is sharp but assymetrical. So we wouldn't really expect a simple gaussian model to perfectly match this data. Despite these shortcomings the segmentation is relatively straightforward due to the wide gap in intensities betwen the soft-tissue region (80-160) and the bone region (240 and above).
+            </div>
+          </div>
+        </div>
+      </div>
+    </div><!-- Panel End -->
+
+
+  </div><!-- Accordion end -->
+
+
+
+
+</div> <!-- Container -->
 
 </body>
 
