@@ -9,7 +9,7 @@
   },
   "data": [
     {
-      "name": "onsykzaw",
+      "name": "bzmexdwk",
       "values": [
         {
           "x": 0,
@@ -1040,19 +1040,19 @@
   ],
   "scales": [
     {
-      "name": "onsykzaw-x-scale",
+      "name": "bzmexdwk-x-scale",
       "type": "linear",
       "domain": {
-        "data": "onsykzaw",
+        "data": "bzmexdwk",
         "field": "data.x"
       },
       "range": "width"
     },
     {
-      "name": "onsykzaw-y-scale",
+      "name": "bzmexdwk-y-scale",
       "type": "linear",
       "domain": {
-        "data": "onsykzaw",
+        "data": "bzmexdwk",
         "field": "data.y"
       },
       "range": "height"
@@ -1062,25 +1062,25 @@
     {
       "type": "rect",
       "from": {
-        "data": "onsykzaw"
+        "data": "bzmexdwk"
       },
       "properties": {
         "enter": {
           "x": {
             "field": "data.x",
-            "scale": "onsykzaw-x-scale"
+            "scale": "bzmexdwk-x-scale"
           },
           "width": {
             "value": 0.9,
-            "scale": "onsykzaw-x-scale"
+            "scale": "bzmexdwk-x-scale"
           },
           "y": {
             "field": "data.y",
-            "scale": "onsykzaw-y-scale"
+            "scale": "bzmexdwk-y-scale"
           },
           "y2": {
             "value": 0,
-            "scale": "onsykzaw-y-scale"
+            "scale": "bzmexdwk-y-scale"
           }
         },
         "update": {
@@ -1099,11 +1099,11 @@
   "axes": [
     {
       "type": "x",
-      "scale": "onsykzaw-x-scale"
+      "scale": "bzmexdwk-x-scale"
     },
     {
       "type": "y",
-      "scale": "onsykzaw-y-scale"
+      "scale": "bzmexdwk-y-scale"
     }
   ]
 }

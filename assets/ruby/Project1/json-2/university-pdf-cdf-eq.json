@@ -9,7 +9,7 @@
   },
   "data": [
     {
-      "name": "juohtyps",
+      "name": "qsvujzfo",
       "values": [
         {
           "x": 0,
@@ -1038,7 +1038,7 @@
       ]
     },
     {
-      "name": "diashwqe",
+      "name": "jvxtpmfe",
       "values": [
         {
           "x": 0,
@@ -2069,19 +2069,19 @@
   ],
   "scales": [
     {
-      "name": "juohtyps-x-scale",
+      "name": "qsvujzfo-x-scale",
       "type": "linear",
       "domain": {
-        "data": "juohtyps",
+        "data": "qsvujzfo",
         "field": "data.x"
       },
       "range": "width"
     },
     {
-      "name": "juohtyps-y-scale",
+      "name": "qsvujzfo-y-scale",
       "type": "linear",
       "domain": {
-        "data": "juohtyps",
+        "data": "qsvujzfo",
         "field": "data.y"
       },
       "range": "height"
@@ -2091,25 +2091,25 @@
     {
       "type": "rect",
       "from": {
-        "data": "juohtyps"
+        "data": "qsvujzfo"
       },
       "properties": {
         "enter": {
           "x": {
             "field": "data.x",
-            "scale": "juohtyps-x-scale"
+            "scale": "qsvujzfo-x-scale"
           },
           "width": {
             "value": 0.9,
-            "scale": "juohtyps-x-scale"
+            "scale": "qsvujzfo-x-scale"
           },
           "y": {
             "field": "data.y",
-            "scale": "juohtyps-y-scale"
+            "scale": "qsvujzfo-y-scale"
           },
           "y2": {
             "value": 0,
-            "scale": "juohtyps-y-scale"
+            "scale": "qsvujzfo-y-scale"
           }
         },
         "update": {
@@ -2127,17 +2127,17 @@
     {
       "type": "line",
       "from": {
-        "data": "diashwqe"
+        "data": "jvxtpmfe"
       },
       "properties": {
         "enter": {
           "x": {
             "field": "data.x",
-            "scale": "juohtyps-x-scale"
+            "scale": "qsvujzfo-x-scale"
           },
           "y": {
             "field": "data.y",
-            "scale": "juohtyps-y-scale"
+            "scale": "qsvujzfo-y-scale"
           }
         },
         "update": {
@@ -2162,11 +2162,11 @@
   "axes": [
     {
       "type": "x",
-      "scale": "juohtyps-x-scale"
+      "scale": "qsvujzfo-x-scale"
     },
     {
       "type": "y",
-      "scale": "juohtyps-y-scale"
+      "scale": "qsvujzfo-y-scale"
     }
   ]
 }

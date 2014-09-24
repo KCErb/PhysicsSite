@@ -9,7 +9,7 @@
   },
   "data": [
     {
-      "name": "sjudvrya",
+      "name": "vyhodlxp",
       "values": [
         {
           "x": 0,
@@ -1040,19 +1040,19 @@
   ],
   "scales": [
     {
-      "name": "sjudvrya-x-scale",
+      "name": "vyhodlxp-x-scale",
       "type": "linear",
       "domain": {
-        "data": "sjudvrya",
+        "data": "vyhodlxp",
         "field": "data.x"
       },
       "range": "width"
     },
     {
-      "name": "sjudvrya-y-scale",
+      "name": "vyhodlxp-y-scale",
       "type": "linear",
       "domain": {
-        "data": "sjudvrya",
+        "data": "vyhodlxp",
         "field": "data.y"
       },
       "range": "height"
@@ -1062,25 +1062,25 @@
     {
       "type": "rect",
       "from": {
-        "data": "sjudvrya"
+        "data": "vyhodlxp"
       },
       "properties": {
         "enter": {
           "x": {
             "field": "data.x",
-            "scale": "sjudvrya-x-scale"
+            "scale": "vyhodlxp-x-scale"
           },
           "width": {
             "value": 0.9,
-            "scale": "sjudvrya-x-scale"
+            "scale": "vyhodlxp-x-scale"
           },
           "y": {
             "field": "data.y",
-            "scale": "sjudvrya-y-scale"
+            "scale": "vyhodlxp-y-scale"
           },
           "y2": {
             "value": 0,
-            "scale": "sjudvrya-y-scale"
+            "scale": "vyhodlxp-y-scale"
           }
         },
         "update": {
@@ -1099,11 +1099,11 @@
   "axes": [
     {
       "type": "x",
-      "scale": "sjudvrya-x-scale"
+      "scale": "vyhodlxp-x-scale"
     },
     {
       "type": "y",
-      "scale": "sjudvrya-y-scale"
+      "scale": "vyhodlxp-y-scale"
     }
   ]
 }

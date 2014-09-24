@@ -9,7 +9,7 @@
   },
   "data": [
     {
-      "name": "zikwexnl",
+      "name": "sparktcn",
       "values": [
         {
           "x": 0,
@@ -1040,19 +1040,19 @@
   ],
   "scales": [
     {
-      "name": "zikwexnl-x-scale",
+      "name": "sparktcn-x-scale",
       "type": "linear",
       "domain": {
-        "data": "zikwexnl",
+        "data": "sparktcn",
         "field": "data.x"
       },
       "range": "width"
     },
     {
-      "name": "zikwexnl-y-scale",
+      "name": "sparktcn-y-scale",
       "type": "linear",
       "domain": {
-        "data": "zikwexnl",
+        "data": "sparktcn",
         "field": "data.y"
       },
       "range": "height"
@@ -1062,25 +1062,25 @@
     {
       "type": "rect",
       "from": {
-        "data": "zikwexnl"
+        "data": "sparktcn"
       },
       "properties": {
         "enter": {
           "x": {
             "field": "data.x",
-            "scale": "zikwexnl-x-scale"
+            "scale": "sparktcn-x-scale"
           },
           "width": {
             "value": 0.9,
-            "scale": "zikwexnl-x-scale"
+            "scale": "sparktcn-x-scale"
           },
           "y": {
             "field": "data.y",
-            "scale": "zikwexnl-y-scale"
+            "scale": "sparktcn-y-scale"
           },
           "y2": {
             "value": 0,
-            "scale": "zikwexnl-y-scale"
+            "scale": "sparktcn-y-scale"
           }
         },
         "update": {
@@ -1099,11 +1099,11 @@
   "axes": [
     {
       "type": "x",
-      "scale": "zikwexnl-x-scale"
+      "scale": "sparktcn-x-scale"
     },
     {
       "type": "y",
-      "scale": "zikwexnl-y-scale"
+      "scale": "sparktcn-y-scale"
     }
   ]
 }

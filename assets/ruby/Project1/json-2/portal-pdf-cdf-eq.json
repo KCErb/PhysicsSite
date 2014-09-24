@@ -9,7 +9,7 @@
   },
   "data": [
     {
-      "name": "vheotsab",
+      "name": "otyzpvnl",
       "values": [
         {
           "x": 0,
@@ -1038,7 +1038,7 @@
       ]
     },
     {
-      "name": "gpcdebuf",
+      "name": "gvhzctjr",
       "values": [
         {
           "x": 0,
@@ -2069,19 +2069,19 @@
   ],
   "scales": [
     {
-      "name": "vheotsab-x-scale",
+      "name": "otyzpvnl-x-scale",
       "type": "linear",
       "domain": {
-        "data": "vheotsab",
+        "data": "otyzpvnl",
         "field": "data.x"
       },
       "range": "width"
     },
     {
-      "name": "vheotsab-y-scale",
+      "name": "otyzpvnl-y-scale",
       "type": "linear",
       "domain": {
-        "data": "vheotsab",
+        "data": "otyzpvnl",
         "field": "data.y"
       },
       "range": "height"
@@ -2091,25 +2091,25 @@
     {
       "type": "rect",
       "from": {
-        "data": "vheotsab"
+        "data": "otyzpvnl"
       },
       "properties": {
         "enter": {
           "x": {
             "field": "data.x",
-            "scale": "vheotsab-x-scale"
+            "scale": "otyzpvnl-x-scale"
           },
           "width": {
             "value": 0.9,
-            "scale": "vheotsab-x-scale"
+            "scale": "otyzpvnl-x-scale"
           },
           "y": {
             "field": "data.y",
-            "scale": "vheotsab-y-scale"
+            "scale": "otyzpvnl-y-scale"
           },
           "y2": {
             "value": 0,
-            "scale": "vheotsab-y-scale"
+            "scale": "otyzpvnl-y-scale"
           }
         },
         "update": {
@@ -2127,17 +2127,17 @@
     {
       "type": "line",
       "from": {
-        "data": "gpcdebuf"
+        "data": "gvhzctjr"
       },
       "properties": {
         "enter": {
           "x": {
             "field": "data.x",
-            "scale": "vheotsab-x-scale"
+            "scale": "otyzpvnl-x-scale"
           },
           "y": {
             "field": "data.y",
-            "scale": "vheotsab-y-scale"
+            "scale": "otyzpvnl-y-scale"
           }
         },
         "update": {
@@ -2162,11 +2162,11 @@
   "axes": [
     {
       "type": "x",
-      "scale": "vheotsab-x-scale"
+      "scale": "otyzpvnl-x-scale"
     },
     {
       "type": "y",
-      "scale": "vheotsab-y-scale"
+      "scale": "otyzpvnl-y-scale"
     }
   ]
 }

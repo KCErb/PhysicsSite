@@ -9,7 +9,7 @@
   },
   "data": [
     {
-      "name": "nugmcyqt",
+      "name": "yvlgmspf",
       "values": [
         {
           "x": 0,
@@ -1038,7 +1038,7 @@
       ]
     },
     {
-      "name": "vsztokgy",
+      "name": "xwqjdymi",
       "values": [
         {
           "x": 0,
@@ -2069,19 +2069,19 @@
   ],
   "scales": [
     {
-      "name": "nugmcyqt-x-scale",
+      "name": "yvlgmspf-x-scale",
       "type": "linear",
       "domain": {
-        "data": "nugmcyqt",
+        "data": "yvlgmspf",
         "field": "data.x"
       },
       "range": "width"
     },
     {
-      "name": "nugmcyqt-y-scale",
+      "name": "yvlgmspf-y-scale",
       "type": "linear",
       "domain": {
-        "data": "nugmcyqt",
+        "data": "yvlgmspf",
         "field": "data.y"
       },
       "range": "height"
@@ -2091,25 +2091,25 @@
     {
       "type": "rect",
       "from": {
-        "data": "nugmcyqt"
+        "data": "yvlgmspf"
       },
       "properties": {
         "enter": {
           "x": {
             "field": "data.x",
-            "scale": "nugmcyqt-x-scale"
+            "scale": "yvlgmspf-x-scale"
           },
           "width": {
             "value": 0.9,
-            "scale": "nugmcyqt-x-scale"
+            "scale": "yvlgmspf-x-scale"
           },
           "y": {
             "field": "data.y",
-            "scale": "nugmcyqt-y-scale"
+            "scale": "yvlgmspf-y-scale"
           },
           "y2": {
             "value": 0,
-            "scale": "nugmcyqt-y-scale"
+            "scale": "yvlgmspf-y-scale"
           }
         },
         "update": {
@@ -2127,17 +2127,17 @@
     {
       "type": "line",
       "from": {
-        "data": "vsztokgy"
+        "data": "xwqjdymi"
       },
       "properties": {
         "enter": {
           "x": {
             "field": "data.x",
-            "scale": "nugmcyqt-x-scale"
+            "scale": "yvlgmspf-x-scale"
           },
           "y": {
             "field": "data.y",
-            "scale": "nugmcyqt-y-scale"
+            "scale": "yvlgmspf-y-scale"
           }
         },
         "update": {
@@ -2162,11 +2162,11 @@
   "axes": [
     {
       "type": "x",
-      "scale": "nugmcyqt-x-scale"
+      "scale": "yvlgmspf-x-scale"
     },
     {
       "type": "y",
-      "scale": "nugmcyqt-y-scale"
+      "scale": "yvlgmspf-y-scale"
     }
   ]
 }

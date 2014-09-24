@@ -9,7 +9,7 @@
   },
   "data": [
     {
-      "name": "vrqflsku",
+      "name": "xdupofim",
       "values": [
         {
           "x": 0,
@@ -1040,19 +1040,19 @@
   ],
   "scales": [
     {
-      "name": "vrqflsku-x-scale",
+      "name": "xdupofim-x-scale",
       "type": "linear",
       "domain": {
-        "data": "vrqflsku",
+        "data": "xdupofim",
         "field": "data.x"
       },
       "range": "width"
     },
     {
-      "name": "vrqflsku-y-scale",
+      "name": "xdupofim-y-scale",
       "type": "linear",
       "domain": {
-        "data": "vrqflsku",
+        "data": "xdupofim",
         "field": "data.y"
       },
       "range": "height"
@@ -1062,25 +1062,25 @@
     {
       "type": "rect",
       "from": {
-        "data": "vrqflsku"
+        "data": "xdupofim"
       },
       "properties": {
         "enter": {
           "x": {
             "field": "data.x",
-            "scale": "vrqflsku-x-scale"
+            "scale": "xdupofim-x-scale"
           },
           "width": {
             "value": 0.9,
-            "scale": "vrqflsku-x-scale"
+            "scale": "xdupofim-x-scale"
           },
           "y": {
             "field": "data.y",
-            "scale": "vrqflsku-y-scale"
+            "scale": "xdupofim-y-scale"
           },
           "y2": {
             "value": 0,
-            "scale": "vrqflsku-y-scale"
+            "scale": "xdupofim-y-scale"
           }
         },
         "update": {
@@ -1099,11 +1099,11 @@
   "axes": [
     {
       "type": "x",
-      "scale": "vrqflsku-x-scale"
+      "scale": "xdupofim-x-scale"
     },
     {
       "type": "y",
-      "scale": "vrqflsku-y-scale"
+      "scale": "xdupofim-y-scale"
     }
   ]
 }

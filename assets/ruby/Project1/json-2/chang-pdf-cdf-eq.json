@@ -9,7 +9,7 @@
   },
   "data": [
     {
-      "name": "uablditf",
+      "name": "qkjvepra",
       "values": [
         {
           "x": 0,
@@ -1038,7 +1038,7 @@
       ]
     },
     {
-      "name": "hdvpwknt",
+      "name": "duioyfjx",
       "values": [
         {
           "x": 0,
@@ -2069,19 +2069,19 @@
   ],
   "scales": [
     {
-      "name": "uablditf-x-scale",
+      "name": "qkjvepra-x-scale",
       "type": "linear",
       "domain": {
-        "data": "uablditf",
+        "data": "qkjvepra",
         "field": "data.x"
       },
       "range": "width"
     },
     {
-      "name": "uablditf-y-scale",
+      "name": "qkjvepra-y-scale",
       "type": "linear",
       "domain": {
-        "data": "uablditf",
+        "data": "qkjvepra",
         "field": "data.y"
       },
       "range": "height"
@@ -2091,25 +2091,25 @@
     {
       "type": "rect",
       "from": {
-        "data": "uablditf"
+        "data": "qkjvepra"
       },
       "properties": {
         "enter": {
           "x": {
             "field": "data.x",
-            "scale": "uablditf-x-scale"
+            "scale": "qkjvepra-x-scale"
           },
           "width": {
             "value": 0.9,
-            "scale": "uablditf-x-scale"
+            "scale": "qkjvepra-x-scale"
           },
           "y": {
             "field": "data.y",
-            "scale": "uablditf-y-scale"
+            "scale": "qkjvepra-y-scale"
           },
           "y2": {
             "value": 0,
-            "scale": "uablditf-y-scale"
+            "scale": "qkjvepra-y-scale"
           }
         },
         "update": {
@@ -2127,17 +2127,17 @@
     {
       "type": "line",
       "from": {
-        "data": "hdvpwknt"
+        "data": "duioyfjx"
       },
       "properties": {
         "enter": {
           "x": {
             "field": "data.x",
-            "scale": "uablditf-x-scale"
+            "scale": "qkjvepra-x-scale"
           },
           "y": {
             "field": "data.y",
-            "scale": "uablditf-y-scale"
+            "scale": "qkjvepra-y-scale"
           }
         },
         "update": {
@@ -2162,11 +2162,11 @@
   "axes": [
     {
       "type": "x",
-      "scale": "uablditf-x-scale"
+      "scale": "qkjvepra-x-scale"
     },
     {
       "type": "y",
-      "scale": "uablditf-y-scale"
+      "scale": "qkjvepra-y-scale"
     }
   ]
 }

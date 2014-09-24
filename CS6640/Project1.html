@@ -59,7 +59,7 @@
     </h1>
     <hr>
     <p class="lead">
-      This webpage contains the work, results, code, and discussions for Project 1. All of the work found here was done in Ruby by me using SciRuby's <a href="https://github.com/SciRuby/plotrb">Plotrb</a> and <a href="https://github.com/SciRuby/nmatrix">Nmatrix</a>. As of now SciRuby doesn't have any image processing tools so I built all of the classes, modules, and such needed to process and display the data as you see it here. That means the bulk of my work on this assignment is found <a>here</a> in my DIPTools module and <a>here</a> in my Plotter module. The only other things to note before we dive into the assignment is that I used <a href="http://www.imagemagick.org/RMagick/doc/#introduction">RMagick</a> to read and write image files, and I created a <a href="#">MathTools</a> module to store functions that I come across during the work of this course.
+      This webpage contains the work, results, code, and discussions for Project 1. All of the work found here was done in Ruby by me using SciRuby's <a href="https://github.com/SciRuby/plotrb">Plotrb</a> and <a href="https://github.com/SciRuby/nmatrix">Nmatrix</a>. As of now SciRuby doesn't have any image processing tools so I built all of the classes, modules, and such needed to process and display the data as you see it here. That means the bulk of my work on this assignment is found <a href="https://github.com/KCErb/PhysicsSite/tree/master/assets/ruby/DIPTools">here</a> in my DIPTools module and <a href="https://github.com/KCErb/PhysicsSite/tree/master/assets/ruby/Plotter">here</a> in my Plotter module. The only other things to note before we dive into the assignment is that I used <a href="http://www.imagemagick.org/RMagick/doc/#introduction">RMagick</a> to read and write image files, and I created a <a href="https://github.com/KCErb/PhysicsSite/tree/master/assets/ruby/MathTools">MathTools</a> module to store functions that I come across during the work of this course.
     </p>
 </div>
 
@@ -68,7 +68,7 @@
       1. Build a Histogram and CDF
     </h2>
     <p class="lead">
-      The first task in this assignment was to simply obtain a histogram and CDF of several test images and some images that we collected ourselves. The code I used to generate these images is found <a>here</a> and the code I used to generate gray-scale versions of my own photos is found <a>here</a>. I chose to display normalized histograms (PDFs) of the images instead of regular (unnormalized) histograms so that the cdf would integrate to 1.0.
+      The first task in this assignment was to simply obtain a histogram and CDF of several test images and some images that we collected ourselves. The code I used to generate these images is found <a href="https://github.com/KCErb/PhysicsSite/blob/master/assets/ruby/Project1/proj1-1.rb">here</a> and the code I used to generate gray-scale versions of my own photos is found <a href="https://github.com/KCErb/PhysicsSite/blob/master/assets/ruby/to_gray.rb">here</a>. I chose to display normalized histograms (PDFs) of the images instead of regular (unnormalized) histograms so that the cdf would integrate to 1.0.
     </p>
     <!-- Plots Accordion -->
     <div class="panel-group" id="accordion">
@@ -347,7 +347,7 @@
     2. Histogram Equalization
   </h2>
   <p class="lead">
-    The next task in this assignment was to use the cdf and pdf functions created earlier to implement a histogram equalization routine. The code used to generate these images and plots can be found <a>here</a>. This time, I scaled the histograms to have a maximum at 1.0 so that the cdf could be plotted on top of the histogram as a line plot. We'll see in these examples that as a rule of thumb, images which have far left or right leaning histograms are well-suited to equalization, whereas images with strong amplitudes in <em>both</em> regions do not equalize as well.
+    The next task in this assignment was to use the cdf and pdf functions created earlier to implement a histogram equalization routine. The code used to generate these images and plots can be found <a href="https://github.com/KCErb/PhysicsSite/blob/master/assets/ruby/Project1/proj1-2.rb">here</a>. This time, I scaled the histograms to have a maximum at 1.0 so that the cdf could be plotted on top of the histogram as a line plot. We'll see in these examples that as a rule of thumb, images which have far left or right leaning histograms are well-suited to equalization, whereas images with strong amplitudes in <em>both</em> regions do not equalize as well.
   </p>
   <!-- Plots Accordion -->
   <div class="panel-group" id="accordion2">
@@ -646,7 +646,7 @@
     3a. Checkerboard image segmentation
   </h2>
   <p class="lead">
-    The next task in this assignment was to use the shape of the histogram to estimate and calculate threshold values for image segmentation. The code used to generate the first two sections can be found <a>here</a>, the third section <a>here</a> and the fourth <a>here</a>.
+    The next task in this assignment was to use the shape of the histogram to estimate and calculate threshold values for image segmentation. The code used to generate the first two sections can be found <a href="https://github.com/KCErb/PhysicsSite/blob/master/assets/ruby/Project1/proj1-3a.rb">here</a>, the third section <a href="https://github.com/KCErb/PhysicsSite/blob/master/assets/ruby/Project1/proj1-3b.rb">here</a> and the fourth <a href="https://github.com/KCErb/PhysicsSite/blob/master/assets/ruby/Project1/proj1-3c.rb">here</a>.
   </p>
   <!-- Plots Accordion -->
   <div class="panel-group" id="accordion3">
@@ -855,7 +855,7 @@
     3b. CT image segmentation
   </h2>
   <p class="lead">
-    Lastly, we used the routines and methods developed throughout this assignment to segment a CT image into bone vs non-bone regions. The code for these two sections is <a>here</a> and <a>here</a>.
+    Lastly, we used the routines and methods developed throughout this assignment to segment a CT image into bone vs non-bone regions. The code for these two sections is <a href="https://github.com/KCErb/PhysicsSite/blob/master/assets/ruby/Project1/proj1-3d.rb">here</a> and <a href="https://github.com/KCErb/PhysicsSite/blob/master/assets/ruby/Project1/proj1-3e.rb">here</a>.
   </p>
   <!-- Plots Accordion -->
   <div class="panel-group" id="accordion4">
